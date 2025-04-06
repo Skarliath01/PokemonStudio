@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  editor:
+    build: ./editor
+    ports:
+      - '3000:3000'
+  engine:
+    build: ./engine
