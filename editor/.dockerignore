@@ -1,0 +1,18 @@
+# node & build
+node_modules
+build
+dist
+
+# Git & Docker
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+
+# Env & config
+.env
+*.log
+
+# IDE & system files
+.vscode
+.DS_Store

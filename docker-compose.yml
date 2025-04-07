@@ -1,8 +1,23 @@
-version: '3.9'
 services:
   editor:
-    build: ./editor
+    build:
+      context: ./editor
+      dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    volumes:
+      - ./editor:/app
+      - /app/node_modules # évite conflit local / container
+    working_dir: /app
+    environment:
+      - CHOKIDAR_USEPOLLING=true # nécessaire sous WSL2 pour React
+      - NODE_ENV=development
+    command: npm start
+
   engine:
-    build: ./engine
+    build:
+      context: ./engine
+      dockerfile: Dockerfile # à créer plus tard pour Godot CLI
+    volumes:
+      - ./projects:/app/projects
+    command: echo "Godot CLI à configurer plus tard"
